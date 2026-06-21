@@ -70,32 +70,32 @@ Cars-Clustered-Prediction/
 ├── requirements.txt       # Daftar dependency
 └── run.py                 # Entry point untuk menjalankan aplikasi
 
-## 🚀 Cara Menjalankan Project
+ 🚀 Cara Menjalankan Project
 
 ```bash
-# 1. Clone repository
+1. Clone repository
 git clone https://github.com/username/repo-name.git
 
-# 2. Masuk ke folder project
+2. Masuk ke folder project
 cd Cars-Clustered-Prediction
 
-# 3. Install dependencies
+3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Jalankan aplikasi Flask
+4. Jalankan aplikasi Flask
 python run.py
 
-# 5. Buka di browser
+5. Buka di browser
 http://localhost:5000
 ```
 
 
-##📈 Metode Machine Learning
+📈 Metode Machine Learning
 
 Clustering : K-Means
 Classification : Random Forest
 
-##📎 Catatan
+📎 Catatan
 Project ini dibuat sebagai bagian dari tugas UAS dan bertujuan untuk mengimplementasikan konsep machine learning ke dalam sistem berbasis aplikasi web yang interaktif dan aplikatif.
 
 
