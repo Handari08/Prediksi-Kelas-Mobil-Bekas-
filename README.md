@@ -70,7 +70,8 @@ Cars-Clustered-Prediction/
 ├── requirements.txt       # Daftar dependency
 └── run.py                 # Entry point untuk menjalankan aplikasi
 
-🚀 Cara Menjalankan Project
+## 🚀 Cara Menjalankan Project
+
 ```bash
 # 1. Clone repository
 git clone https://github.com/username/repo-name.git
@@ -84,9 +85,9 @@ pip install -r requirements.txt
 # 4. Jalankan aplikasi Flask
 python run.py
 
-🌐 Akses Aplikasi
-
+# 5. Buka di browser
 http://localhost:5000
+
 
 📈 Metode Machine Learning
 
