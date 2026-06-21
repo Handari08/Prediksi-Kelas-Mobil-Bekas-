@@ -72,20 +72,24 @@ Cars-Clustered-Prediction/
 ```
  🚀 Cara Menjalankan Project
 
-```bash
 1. Clone repository
+```bash
 git clone https://github.com/username/repo-name.git
-
+```
 2. Masuk ke folder project
+```bash
 cd Cars-Clustered-Prediction
-
+```
 3. Install dependencies
+```bash
 pip install -r requirements.txt
-
+```
 4. Jalankan aplikasi Flask
+```bash
 python run.py
-
+```
 5. Buka di browser
+```bash
 http://localhost:5000
 ```
 
