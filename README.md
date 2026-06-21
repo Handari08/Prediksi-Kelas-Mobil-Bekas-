@@ -69,7 +69,7 @@ Cars-Clustered-Prediction/
 ├── config.py              # Konfigurasi aplikasi
 ├── requirements.txt       # Daftar dependency
 └── run.py                 # Entry point untuk menjalankan aplikasi
-
+```
 🚀 Cara Menjalankan Project
 
 # 1. Clone repository
@@ -83,7 +83,7 @@ pip install -r requirements.txt
 
 # 4. Jalankan aplikasi Flask
 python run.py
-```
+
 🌐 Akses Aplikasi
 
 http://localhost:5000
