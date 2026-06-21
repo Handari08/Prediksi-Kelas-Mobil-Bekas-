@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Car Predict</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+
+<!-- ✅ HEADER -->
+<header class="fixed top-0 z-50 w-full bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm h-20 flex items-center">
+<nav class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="text-headline-md font-headline-md font-bold text-primary" href="/">Car Predict</a>
+<div class="hidden md:flex gap-6 items-center">
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors">menu</button>
+<div class="flex gap-4">
+    <a class="text-label-md font-label-md text-secondary hover:text-primary transition-colors" href="/">Home</a>
+    <a class="text-label-md font-label-md text-secondary hover:text-primary transition-colors" href="/dashboard">Dashboard</a>
+    <a class="text-label-md font-label-md text-secondary hover:text-primary transition-colors" href="#">About Model</a>
+    <a class="text-label-md font-label-md text-secondary hover:text-primary transition-colors" href="">Dataset Info</a>
+</div>
+</div>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-label-md font-label-md text-secondary hover:text-primary transition-colors" href="#">About Us</a>
+<a class="text-label-md font-label-md text-primary font-bold border-b-2 border-primary" href="#">Cars</a>
+<a class="text-label-md font-label-md text-secondary hover:text-primary transition-colors" href="#">Help</a>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden material-symbols-outlined">menu</button>
+</nav>
+</header>
+
+<!-- ✅ CONTENT (ISI HALAMAN) -->
+<main class="px-8 pt-24 pb-8">
+
+
+  {% block content %}{% endblock %}
+</main>
+
+<!-- ✅ FOOTER -->
+<footer class="bg-surface-container border-t border-outline-variant mt-24">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="space-y-6">
+<a class="text-headline-sm font-headline-sm font-bold text-primary" href="#">Car Predict</a>
+<p class="text-body-sm text-secondary max-w-xs leading-relaxed">
+                    Platform untuk memprediksi nilai kendaraan dengan presisi tinggi menggunakan metodologi Hybrid Analysis terkini.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">mail</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<h4 class="text-label-md font-bold mb-6">Navigasi</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-body-sm text-secondary hover:text-primary transition-colors" href="#">About Us</a></li>
+<li class=""><a class="text-body-sm text-secondary hover:text-primary transition-colors" href="#">Cars</a></li>
+<li class=""><a class="text-body-sm text-secondary hover:text-primary transition-colors" href="#">Help</a></li>
+<li class=""><a class="text-body-sm text-secondary hover:text-primary transition-colors" href="#">Model Info</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-md font-bold mb-6">Legal</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-body-sm text-secondary hover:text-primary transition-colors" href="#">Terms</a></li>
+<li class=""><a class="text-body-sm text-secondary hover:text-primary transition-colors" href="#">Privacy</a></li>
+</ul>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="text-label-md font-bold">Berlangganan Newsletter</h4>
+<p class="text-body-sm text-secondary">Dapatkan update dataset dan prediksi terbaru langsung di inbox Anda.</p>
+<div class="flex flex-col gap-2">
+<div class="relative">
+<input class="w-full bg-transparent border-b border-outline focus:border-primary transition-all py-3 outline-none px-1 text-body-sm" placeholder="Email Anda" type="email">
+</div>
+<button class="bg-primary text-on-primary py-3 rounded-lg text-label-sm font-label-sm hover:opacity-90 transition-all mt-2">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-8 px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-label-sm text-on-tertiary-container">
+<p class="">© 2026 Pemodelan Data Sains.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Cookie Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Sitemap</a>
+</div>
+</div>
+</footer>
+
+</body>
+</html>

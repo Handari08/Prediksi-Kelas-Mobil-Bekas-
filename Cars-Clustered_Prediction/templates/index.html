@@ -1,0 +1,378 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Car Predict | AI Hybrid Model Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary-container": "#838485",
+                "primary": "#000000",
+                "surface-container-high": "#e8e8e8",
+                "tertiary-container": "#1a1c1d",
+                "outline": "#78767b",
+                "secondary-fixed": "#e3e1ec",
+                "background": "#f9f9f9",
+                "on-primary": "#ffffff",
+                "on-secondary": "#ffffff",
+                "error": "#ba1a1a",
+                "secondary-fixed-dim": "#c6c5cf",
+                "on-primary-fixed-variant": "#474649",
+                "on-secondary-fixed": "#1a1b22",
+                "surface": "#f9f9f9",
+                "inverse-surface": "#2f3131",
+                "on-error": "#ffffff",
+                "surface-dim": "#dadada",
+                "surface-tint": "#5f5e60",
+                "tertiary-fixed": "#e2e2e3",
+                "on-error-container": "#93000a",
+                "primary-fixed": "#e5e1e4",
+                "on-surface-variant": "#47464a",
+                "tertiary-fixed-dim": "#c6c6c7",
+                "on-surface": "#1a1c1c",
+                "surface-container-highest": "#e2e2e2",
+                "inverse-primary": "#c8c6c8",
+                "surface-container": "#eeeeee",
+                "surface-variant": "#e2e2e2",
+                "inverse-on-surface": "#f0f1f1",
+                "primary-container": "#1c1b1d",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-fixed-variant": "#46464e",
+                "outline-variant": "#c8c5ca",
+                "surface-container-low": "#f3f3f3",
+                "on-tertiary": "#ffffff",
+                "on-primary-fixed": "#1c1b1d",
+                "surface-bright": "#f9f9f9",
+                "secondary": "#5d5e66",
+                "on-secondary-container": "#63646c",
+                "on-primary-container": "#858386",
+                "primary-fixed-dim": "#c8c6c8",
+                "tertiary": "#000000",
+                "secondary-container": "#e3e1ec",
+                "error-container": "#ffdad6",
+                "on-tertiary-fixed-variant": "#454748",
+                "on-tertiary-fixed": "#1a1c1d",
+                "on-background": "#1a1c1c"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "margin-mobile": "1rem",
+                "stack-md": "1rem",
+                "stack-sm": "0.5rem",
+                "stack-lg": "2rem",
+                "container-max": "1440px",
+                "margin-desktop": "2.5rem",
+                "gutter": "1.5rem"
+            },
+            "fontFamily": {
+                "headline-lg": ["Inter"],
+                "headline-xl": ["Inter"],
+                "label-md": ["Geist"],
+                "label-sm": ["Geist"],
+                "body-lg": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "body-md": ["Inter"],
+                "body-sm": ["Inter"],
+                "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            user-select: none;
+            display: flex;
+            gap: 4rem;
+        }
+
+        .marquee-content {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-around;
+            gap: 4rem;
+            min-width: 100%;
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bento-card {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden selection:bg-primary selection:text-on-primary">
+<!-- Header / Navbar Section -->
+<header class="fixed top-0 z-50 w-full bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm h-20 flex items-center">
+<nav class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="text-headline-md font-headline-md font-bold text-primary" href="#">Car Predict</a>
+<div class="hidden md:flex gap-6 items-center">
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors">menu</button>
+<div class="flex gap-4">
+<a class="text-label-md font-label-md text-secondary hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-label-md font-label-md text-secondary hover:text-primary transition-colors" href="#">About Model</a>
+<a class="text-label-md font-label-md text-secondary hover:text-primary transition-colors" href="#">Dataset Info</a>
+</div>
+</div>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-label-md font-label-md text-secondary hover:text-primary transition-colors" href="#">About Us</a>
+<a class="text-label-md font-label-md text-primary font-bold border-b-2 border-primary" href="#">Cars</a>
+<a class="text-label-md font-label-md text-secondary hover:text-primary transition-colors" href="#">Help</a>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden material-symbols-outlined">menu</button>
+</nav>
+</header>
+<main class="mt-20">
+<!-- Hero Section -->
+<section class="relative px-margin-desktop py-stack-lg max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter items-center min-h-[80vh]">
+<div class="reveal active">
+<span class="inline-block bg-surface-container-high px-4 py-1 rounded-full text-label-sm font-label-sm uppercase tracking-widest mb-6 text-on-surface-variant">Prediction</span>
+<h1 class="text-headline-xl font-headline-xl text-primary leading-tight mb-6">
+                    Car Prediction with <br> <span class="text-outline">Hybrid Model</span>
+</h1>
+<p class="text-body-lg font-body-lg text-secondary max-w-lg mb-10 leading-relaxed">
+                    Sistem prediksi nilai kendaraan yang revolusioner menggunakan pendekatan Hybrid Model menggabungkan algoritma KNN dan K-Means untuk akurasi data yang tak tertandingi di industri otomotif.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="/dashboard">
+    <button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label-md hover:opacity-90 transition-all flex items-center justify-center gap-2">
+                        Mulai Prediksi
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+
+</a>
+
+<button class="bg-surface border border-outline-variant px-8 py-4 rounded-lg font-label-md hover:bg-surface-container-low transition-all">
+                        Pelajari Dataset
+                    </button>
+</div>
+</div>
+<div class="reveal active delay-200">
+<img alt="Premium Silver Luxury Sports Convertible" class="w-full h-auto object-contain drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCISxJSvfDoS66Es2y-ZS7xI3IodhTaANh0nUQNLSYGpcDL7xZVVzl2tJjA8JYz24G6I3mnGRjc3t9zo0b2zhwgRNGdW0Tn5NcqGkHk7WMVjvy0WZCreUFjxbgZ6wNFzI4Xn13B8fuSexjMynLoS_oIW-LfjTRAM5EqLJsb3MaLBjPEfIYrlDb3j_ZS770qPudLKLWQcEwuRtmd0wlNJn1TirU6rtkgcgshFwNDoWDlhN3MH103Y_ANAdP29bjnV9HY-XxhoXss" style="transform: translate(2.23px, 7.44px);">
+</div>
+</section>
+<!-- Brand Scrolling Section -->
+<section class="py-stack-lg bg-surface border-y border-outline-variant/20">
+<div class="marquee-container opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+<div class="marquee-content"><span class="text-headline-md font-bold tracking-widest uppercase text-primary">BMW</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">TOYOTA</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">HONDA</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">MERCEDES</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">AUDI</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">PORSCHE</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">LEXUS</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">HYUNDAI</span></div>
+<div aria-hidden="true" class="marquee-content"><span class="text-headline-md font-bold tracking-widest uppercase text-primary">BMW</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">TOYOTA</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">HONDA</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">MERCEDES</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">AUDI</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">PORSCHE</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">LEXUS</span><span class="text-headline-md font-bold tracking-widest uppercase text-primary">HYUNDAI</span></div>
+</div>
+</section>
+<!-- Process Grid Section -->
+<section class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="text-center mb-16 reveal active">
+<h2 class="text-headline-lg font-headline-lg text-primary mb-4">Metodologi Analisis</h2>
+<p class="text-body-md text-secondary max-w-2xl mx-auto">Arsitektur data kami dirancang untuk efisiensi maksimal dengan integrasi utama teknologi predictive analytics.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="bento-card reveal bg-white p-8 rounded-[24px] border border-outline-variant shadow-sm flex flex-col items-start gap-4 active">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">K-Means</h3>
+<p class="text-body-sm text-secondary">Klasterisasi data pasar otomotif untuk mengelompokkan variabel harga yang serupa secara cerdas.</p>
+</div>
+<!-- Card 2 -->
+<div class="bento-card reveal delay-100 bg-white p-8 rounded-[24px] border border-outline-variant shadow-sm flex flex-col items-start gap-4 active">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">query_stats</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">KNN</h3>
+<p class="text-body-sm text-secondary">Algoritma K-Nearest Neighbors untuk prediksi akurat berdasarkan perbandingan entitas terdekat.</p>
+</div>
+<!-- Card 3 -->
+<div class="bento-card reveal delay-200 bg-white p-8 rounded-[24px] border border-outline-variant shadow-sm flex flex-col items-start gap-4 active">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">model_training</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Hybrid Model</h3>
+<p class="text-body-sm text-secondary">Sinergi antara KNN &amp; K-Means untuk meminimalkan margin kesalahan dalam prediksi nilai mobil.</p>
+</div>
+<!-- Card 4 -->
+<div class="bento-card reveal delay-300 bg-white p-8 rounded-[24px] border border-outline-variant shadow-sm flex flex-col items-start gap-4 active">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">database</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Dataset</h3>
+<p class="text-body-sm text-secondary">Pangkalan data terintegrasi yang mencakup spesifikasi teknis, tren harga, dan riwayat pasar global.</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-margin-desktop py-stack-lg max-w-container-max mx-auto bg-surface-container-lowest rounded-[32px] my-12 border border-outline-variant overflow-hidden">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="reveal active">
+<img alt="Data Visualization Dashboard" class="w-full h-full object-cover rounded-2xl shadow-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3xPH7mQeLpMLYNlhrrTMHH2KXQkhKd8Y8FPgHION_itc_Z8OBwIwXSKeA557kZZFE8qnSn5KG7e4w_Lk9t4aJJ8czfxVWAZttIGY9QcDyPZb-v--lX-8Gs2HM9ptgufaM0GeCh0zxi2piHCfCCbltKUr9gWQaHeeIR8hvy7oa2ycf9fmsSGYv-zQ8Xl9IcfkLfhnll-Pb88g8PfTI6Uyv8DbzK_gz3LE3M4vzh6k49NluwANIrDX_2vZlqQYQC-TQhwmbS2aZ">
+</div>
+<div class="reveal px-4 active">
+<h2 class="text-headline-lg font-headline-lg text-primary mb-6">Mulai Analisis Jenis Mobil Anda</h2>
+<p class="text-body-lg text-secondary mb-8">
+                        Dapatkan wawasan mendalam tentang harga pasar, depresiasi nilai, dan performa teknis dengan satu klik. Platform kami menyederhanakan data kompleks menjadi keputusan yang cerdas.
+                    </p>
+<div class="mb-8 gap-2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+<span class="text-body-md font-medium">Prediksi Kelas Mobil</span>
+</div>
+<div class="flex items-center gap-3">
+
+<span class="text-body-md font-medium"><br></span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+<span class="text-body-md font-medium">Integrasi Dataset Terkini</span>
+</div>
+</div>
+<a href="/dashboard">
+<button class="bg-primary text-on-primary px-10 py-5 rounded-lg font-label-md hover:opacity-90 transition-all shadow-lg hover:shadow-xl">
+                        Ke Dashboard Prediksi
+                    </button>
+</a>
+
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Section -->
+<footer class="bg-surface-container border-t border-outline-variant mt-24">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="space-y-6">
+<a class="text-headline-sm font-headline-sm font-bold text-primary" href="#">Car Predict</a>
+<p class="text-body-sm text-secondary max-w-xs leading-relaxed">
+                    Platform untuk memprediksi nilai kendaraan dengan presisi tinggi menggunakan metodologi Hybrid Analysis terkini.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">mail</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<h4 class="text-label-md font-bold mb-6">Navigasi</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-body-sm text-secondary hover:text-primary transition-colors" href="#">About Us</a></li>
+<li class=""><a class="text-body-sm text-secondary hover:text-primary transition-colors" href="#">Cars</a></li>
+<li class=""><a class="text-body-sm text-secondary hover:text-primary transition-colors" href="#">Help</a></li>
+<li class=""><a class="text-body-sm text-secondary hover:text-primary transition-colors" href="#">Model Info</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-label-md font-bold mb-6">Legal</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-body-sm text-secondary hover:text-primary transition-colors" href="#">Terms</a></li>
+<li class=""><a class="text-body-sm text-secondary hover:text-primary transition-colors" href="#">Privacy</a></li>
+</ul>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="text-label-md font-bold">Berlangganan Newsletter</h4>
+<p class="text-body-sm text-secondary">Dapatkan update dataset dan prediksi terbaru langsung di inbox Anda.</p>
+<div class="flex flex-col gap-2">
+<div class="relative">
+<input class="w-full bg-transparent border-b border-outline focus:border-primary transition-all py-3 outline-none px-1 text-body-sm" placeholder="Email Anda" type="email">
+</div>
+<button class="bg-primary text-on-primary py-3 rounded-lg text-label-sm font-label-sm hover:opacity-90 transition-all mt-2">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-8 px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-label-sm text-on-tertiary-container">
+<p class="">© 2026 Pemodelan Data Sains.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Cookie Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Sitemap</a>
+</div>
+</div>
+</footer>
+<script>
+        // Reveal Animations on Scroll
+        const reveals = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        
+        // Initial check
+        revealOnScroll();
+
+        // Parallax simple effect for hero image
+        window.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            const heroImg = document.querySelector('.delay-200 img');
+            if(heroImg) {
+                heroImg.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            }
+        });
+    </script>
+
+
+</body></html>

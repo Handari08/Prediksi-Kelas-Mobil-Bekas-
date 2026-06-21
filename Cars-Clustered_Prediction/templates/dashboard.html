@@ -1,0 +1,452 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Car Predict - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c8c5ca",
+                        "on-surface-variant": "#47464a",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dadada",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "on-tertiary-fixed-variant": "#454748",
+                        "primary-container": "#1c1b1d",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1b22",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e3e1ec",
+                        "on-background": "#1a1c1c",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary": "#5d5e66",
+                        "on-secondary-container": "#63646c",
+                        "surface-container": "#eeeeee",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#e5e1e4",
+                        "on-tertiary-fixed": "#1a1c1d",
+                        "secondary-fixed-dim": "#c6c5cf",
+                        "inverse-surface": "#2f3131",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-tint": "#5f5e60",
+                        "on-primary-container": "#858386",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#e2e2e3",
+                        "outline": "#78767b",
+                        "background": "#f9f9f9",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#1a1c1d",
+                        "surface-bright": "#f9f9f9",
+                        "on-surface": "#1a1c1c",
+                        "inverse-primary": "#c8c6c8",
+                        "secondary-fixed": "#e3e1ec",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e2e2e2",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "surface": "#f9f9f9",
+                        "on-secondary-fixed-variant": "#46464e",
+                        "on-primary-fixed": "#1c1b1d",
+                        "primary": "#000000",
+                        "tertiary": "#000000",
+                        "on-tertiary-container": "#838485",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#474649"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "2rem",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "margin-desktop": "2.5rem",
+                        "margin-mobile": "1rem",
+                        "container-max": "1440px",
+                        "gutter": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Geist"],
+                        "headline-xl": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9f9; }
+        .geist-font { font-family: 'Geist', sans-serif; }
+        
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #e2e2e2;
+            border-radius: 5px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #000;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .loader-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.03);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-shadow:hover {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08);
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopNavBar -->
+<main class="max-w-container-max mx-auto px-margin-desktop py-stack-lg min-h-screen">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Left Column: Spesifikasi Detail Mobil (2/3) -->
+<div class="lg:col-span-2 space-y-gutter">
+<div class="bg-surface-container-lowest p-8 rounded-[24px] border border-outline-variant/30 card-shadow">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h1 class="text-headline-lg font-headline-lg text-primary">Spesifikasi Detail Mobil</h1>
+<p class="text-body-md font-body-md text-secondary mt-1">Lengkapi data kendaraan untuk mendapatkan estimasi nilai pasar.</p>
+</div>
+<span class="material-symbols-outlined text-primary text-[32px]">directions_car</span>
+</div>
+<form class="space-y-8" id="prediction-form">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Merek Mobil -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-secondary uppercase tracking-wider">Merek Mobil</label>
+<select class="w-full bg-transparent border-b border-outline-variant focus:border-primary focus:ring-0 py-2 text-body-md font-body-md transition-all appearance-none cursor-pointer">
+<option value="">Pilih Merek</option>
+<option value="toyota">Toyota</option>
+<option value="honda">Honda</option>
+<option value="bmw">BMW</option>
+<option value="mercedes">Mercedes-Benz</option>
+</select>
+</div>
+<!-- Kondisi Mobil -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-secondary uppercase tracking-wider">Kondisi Mobil</label>
+<select class="w-full bg-transparent border-b border-outline-variant focus:border-primary focus:ring-0 py-2 text-body-md font-body-md transition-all appearance-none cursor-pointer">
+<option value="baru">Baru</option>
+<option value="bekas">Bekas</option>
+</select>
+</div>
+<!-- Model/Seri -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-secondary uppercase tracking-wider">Model / Seri</label>
+<input class="w-full bg-transparent border-b border-outline-variant focus:border-primary focus:ring-0 py-2 text-body-md font-body-md transition-all" placeholder="Contoh: Camry 2.5V" type="text"/>
+</div>
+<!-- Milage -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-secondary uppercase tracking-wider">Milage (KM)</label>
+<input id="milage"
+  class="w-full bg-transparent border-b border-outline-variant focus:border-primary focus:ring-0 py-2 text-body-md font-body-md transition-all" 
+  placeholder="Contoh: 15000" 
+  type="number"/>
+</div>
+<!-- Engine Size -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-secondary uppercase tracking-wider">Engine Size (CC)</label>
+<input id="engine_size" class="w-full bg-transparent border-b border-outline-variant focus:border-primary focus:ring-0 py-2 text-body-md font-body-md transition-all" placeholder="Contoh: 2498" type="number"/>
+</div>
+<!-- Price -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-secondary uppercase tracking-wider">Harga Beli ($)</label>
+<input id="price" class="w-full bg-transparent border-b border-outline-variant focus:border-primary focus:ring-0 py-2 text-body-md font-body-md transition-all" placeholder="Contoh: 450000000" type="number"/>
+</div>
+</div>
+<!-- Sliders -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10 py-4">
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="text-label-md font-label-md text-secondary uppercase tracking-wider">Tahun Mobil</label>
+<span class="font-label-md text-primary font-bold" id="year-val">2020</span>
+</div>
+<input max="2024" min="2000" oninput="document.getElementById('year-val').innerText = this.value" type="range" value="2020"/>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="text-label-md font-label-md text-secondary uppercase tracking-wider">Horsepower (HP)</label>
+<span class="font-label-md text-primary font-bold" id="hp-val">180</span>
+</div>
+<input max="1000" min="50" oninput="document.getElementById('hp-val').innerText = this.value" type="range" value="180"/>
+</div>
+</div>
+<!-- Selection Chips -->
+<div class="space-y-6">
+<div class="space-y-3">
+<label class="text-label-md font-label-md text-secondary uppercase tracking-wider">Jenis Mesin</label>
+<div class="flex flex-wrap gap-3">
+<button class="px-6 py-2 rounded-full border border-outline-variant hover:border-primary transition-all text-label-md font-label-md bg-surface-container-low active-chip" onclick="selectChip(this, 'mesin')" type="button">Bensin</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant hover:border-primary transition-all text-label-md font-label-md" onclick="selectChip(this, 'mesin')" type="button">Diesel</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant hover:border-primary transition-all text-label-md font-label-md" onclick="selectChip(this, 'mesin')" type="button">Hybrid</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant hover:border-primary transition-all text-label-md font-label-md" onclick="selectChip(this, 'mesin')" type="button">EV</button>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-label-md font-label-md text-secondary uppercase tracking-wider">Transmisi</label>
+<div class="flex flex-wrap gap-3">
+<button class="px-6 py-2 rounded-full border border-outline-variant hover:border-primary transition-all text-label-md font-label-md bg-surface-container-low active-chip" onclick="selectChip(this, 'trans')" type="button">Otomatis</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant hover:border-primary transition-all text-label-md font-label-md" onclick="selectChip(this, 'trans')" type="button">Manual</button>
+</div>
+</div>
+</div>
+<!-- Primary Button -->
+<div class="pt-8">
+
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-bold text-body-lg hover:opacity-90 active:scale-[0.98] transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3" onclick="startProcess()" type="button">
+<span></span> Kalkulasi Prediksi
+                            </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: Petunjuk Penggunaan (1/3) -->
+<div class="space-y-gutter">
+<div class="bg-surface-container-lowest p-8 rounded-[24px] border border-outline-variant/30 card-shadow h-full">
+<h2 class="text-headline-md font-headline-md text-primary mb-6">Petunjuk Penggunaan</h2>
+<ul class="space-y-8">
+<li class="flex gap-4">
+<div class="bg-surface-container-high w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]">fact_check</span>
+</div>
+<div>
+<h4 class="text-label-md font-bold text-primary mb-1">Input Data Valid</h4>
+<p class="text-body-sm text-secondary">Pastikan seluruh data yang Anda masukkan sesuai dengan dokumen resmi kendaraan untuk hasil yang presisi.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<div class="bg-surface-container-high w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]">analytics</span>
+</div>
+<div>
+<h4 class="text-label-md font-bold text-primary mb-1">Analisis Berbasis Data</h4>
+<p class="text-body-sm text-secondary">Sistem kami menggunakan basis data ribuan transaksi untuk mengestimasi nilai penyusutan kendaraan.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<div class="bg-surface-container-high w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]">history</span>
+</div>
+<div>
+<h4 class="text-label-md font-bold text-primary mb-1">Pantau Secara Rutin</h4>
+<p class="text-body-sm text-secondary">Nilai kendaraan berubah seiring waktu. Lakukan kalkulasi secara berkala setiap 6 bulan sekali.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<div class="bg-surface-container-high w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]">lock</span>
+</div>
+<div>
+<h4 class="text-label-md font-bold text-primary mb-1">Kerahasiaan Data</h4>
+<p class="text-body-sm text-secondary">Data yang Anda masukkan hanya digunakan untuk sesi kalkulasi ini dan tidak akan disebarluaskan.</p>
+</div>
+</li>
+</ul>
+<div class="mt-12 p-6 bg-background rounded-xl border border-dashed border-outline-variant">
+<p class="text-label-sm text-secondary text-center italic">"Keputusan yang tepat dimulai dari informasi yang akurat."</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Result Modal (Hidden by default) -->
+<div class="fixed inset-0 z-[110] hidden items-center justify-center bg-black/40 backdrop-blur-sm p-4" id="result-modal">
+<div class="bg-white rounded-[32px] p-10 max-w-lg w-full text-center shadow-2xl scale-in-center">
+<span class="material-symbols-outlined text-[64px] text-primary mb-4">verified</span>
+<h2 class="text-headline-lg font-headline-lg mb-2">Estimasi Berhasil</h2>
+<p class="text-body-md text-secondary mb-8">Berdasarkan data yang Anda masukkan, estimasi nilai kendaraan Anda adalah:</p>
+<div class="bg-surface-container-low py-6 px-8 rounded-2xl mb-8">
+<span class="text-label-md text-secondary uppercase block mb-1">Nilai Estimasi</span>
+<span class="text-headline-xl font-headline-xl text-primary">Rp 412.500.000</span>
+</div>
+<button class="w-full border-2 border-primary text-primary py-4 rounded-xl font-bold hover:bg-primary hover:text-white transition-all" onclick="closeResult()">Tutup Hasil</button>
+</div>
+</div>
+<!-- Loading Overlay -->
+<div class="loader-overlay" id="loader">
+<div class="spinner"></div>
+<p id="loading-text" class="mt-6 text-body-md font-label-md font-bold text-primary">
+    Memproses data...
+</p>
+<p class="text-body-sm text-secondary">Menganalisis spesifikasi kendaraan Anda</p>
+</div>
+<!-- Footer -->
+
+<script>
+        function selectChip(element, group) {
+            // Find all buttons in the parent group and reset them
+            const container = element.parentElement;
+            const buttons = container.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-surface-container-low', 'font-bold', 'border-primary');
+                btn.classList.add('border-outline-variant');
+            });
+            
+            // Activate selected
+            element.classList.add('bg-surface-container-low', 'font-bold', 'border-primary');
+            element.classList.remove('border-outline-variant');
+        }
+
+   
+async function startProcess() {
+
+    const loader = document.getElementById('loader');
+   loader.style.display = 'flex';
+
+setTimeout(() => {
+   // fetch disini
+}, 800);
+
+
+    const data = {
+        model_year: parseInt(document.getElementById("year-val").innerText),
+        milage: parseInt(document.getElementById("milage").value),
+        horsepower: parseInt(document.getElementById("hp-val").innerText),
+        engine_size: parseFloat(document.getElementById("engine_size").value),
+        price: parseFloat(document.getElementById("price").value)
+    };
+
+    try {
+        const res = await fetch("/predict", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        sessionStorage.setItem("hasil_prediksi", JSON.stringify(result));
+        sessionStorage.setItem("input_data", JSON.stringify(data));
+
+        window.location.href = "/result";
+
+    } catch (err) {
+        loader.style.display = 'none';
+        alert("Error prediksi");
+    }
+}
+
+
+
+
+
+        function showResult() {
+            const modal = document.getElementById('result-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeResult() {
+            const modal = document.getElementById('result-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Initialize active chips
+        document.querySelectorAll('.active-chip').forEach(chip => {
+            chip.classList.add('bg-surface-container-low', 'font-bold', 'border-primary');
+            chip.classList.remove('border-outline-variant');
+        });
+
+        let texts = [
+ "Memproses data...",
+ "Menganalisis spesifikasi...",
+ "Menentukan kategori..."
+];
+
+let i = 0;
+
+setInterval(()=>{
+    const el = document.getElementById("loading-text");
+    if(el){
+        el.innerText = texts[i % 3];
+        i++;
+    }
+},1000);
+    </script>
+    
+
+</body></html>
+
+
+{% endblock %}

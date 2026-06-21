@@ -1,0 +1,367 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Geist:wght@400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .bento-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08);
+            border-color: #D4D4D8;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c8c5ca",
+                        "on-surface-variant": "#47464a",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dadada",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "on-tertiary-fixed-variant": "#454748",
+                        "primary-container": "#1c1b1d",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1b22",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e3e1ec",
+                        "on-background": "#1a1c1c",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary": "#5d5e66",
+                        "on-secondary-container": "#63646c",
+                        "surface-container": "#eeeeee",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#e5e1e4",
+                        "on-tertiary-fixed": "#1a1c1d",
+                        "secondary-fixed-dim": "#c6c5cf",
+                        "inverse-surface": "#2f3131",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-tint": "#5f5e60",
+                        "on-primary-container": "#858386",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#e2e2e3",
+                        "outline": "#78767b",
+                        "background": "#f9f9f9",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#1a1c1d",
+                        "surface-bright": "#f9f9f9",
+                        "on-surface": "#1a1c1c",
+                        "inverse-primary": "#c8c6c8",
+                        "secondary-fixed": "#e3e1ec",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e2e2e2",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "surface": "#f9f9f9",
+                        "on-secondary-fixed-variant": "#46464e",
+                        "on-primary-fixed": "#1c1b1d",
+                        "primary": "#000000",
+                        "tertiary": "#000000",
+                        "on-tertiary-container": "#838485",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#474649"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "2rem",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "margin-desktop": "2.5rem",
+                        "margin-mobile": "1rem",
+                        "container-max": "1440px",
+                        "gutter": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Geist"],
+                        "headline-xl": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopNavBar -->
+
+<main class="max-w-container-max mx-auto px-margin-desktop py-stack-lg">
+<!-- Hero Section: Hasil Prediksi -->
+<div class="flex flex-col items-center text-center mb-stack-lg">
+<div class="bg-surface-container-low px-4 py-1.5 rounded-full mb-stack-md border border-outline-variant/50">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-widest">Prediksi Selesai</span>
+</div>
+<h1 id="hasil-label" class="font-headline-xl text-headline-xl text-primary mb-4"></h1>
+<div id="badge" class="inline-block px-4 py-2 rounded-full text-white font-semibold mb-4"></div>
+<p id="hasil-desc" class="font-body-lg text-body-lg text-secondary max-w-2xl"></p>
+<p id="insight" class="text-sm text-gray-500 mt-2"></p>
+<div class="mt-8 bg-gray-50 p-6 rounded-xl max-w-xl mx-auto">
+    <h3 class="font-bold mb-2">Ringkasan Input</h3>
+    <div id="summary"></div>
+</div>
+<div class="mt-stack-md flex gap-4">
+<a href="/dashboard">
+    <button class="bg-primary text-on-primary px-8 py-3 rounded-lg font-label-md text-label-md hover:bg-opacity-90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                    Back to Dashboard
+                </button>
+</a>
+<button class="bg-white border border-outline-variant text-primary px-8 py-3 rounded-lg font-label-md text-label-md hover:bg-surface-container transition-all">
+                    Unduh Laporan
+                </button>
+</div>
+</div>
+<!-- Bento Grid for Analysis Details -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-stack-lg">
+<!-- Prediction Status Card -->
+<div class="md:col-span-1 bento-card bg-white p-8 rounded-[24px] border border-outline-variant/40">
+<div class="flex flex-col h-full">
+<span class="text-label-sm font-label-sm text-secondary mb-2 uppercase">Status Validitas</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Akurasi</h3>
+<div class="flex-grow flex items-end">
+<div class="w-full">
+<div class="flex justify-between mb-2">
+    <span class="text-label-sm text-secondary"></span>
+    <span id="acc-text"></span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+    <div id="acc-bar" class="h-full bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Asset: Car Profile -->
+<div class="md:col-span-2 bento-card bg-white rounded-[24px] border border-outline-variant/40 overflow-hidden relative group h-64 md:h-auto">
+<div class="absolute inset-0 z-0 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A side-profile high-resolution photograph of a modern, sleek silver sedan parked in a minimalist architectural studio. The lighting is soft and diffused, highlighting the elegant contours of the vehicle's design. The background is a clean white concrete wall, emphasizing a professional and premium automotive aesthetic. The composition is clean and centered, radiating a sense of high-end precision." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBAwCEiXDOwCOqYVSAjbWiavpH3ItI7WObP8WltXYFxbCpwfoxatjXrqmdcUxe0fR1RETRi2fOMxEOowlamQGwe791WcJwj4bc_51gB1X5ADNmKyxMj1WQC_Kq05yYWcamYLMeDTK6bPI_VAWYW9W6X4oGyBJlt9wpzRyAFTEk1UC8UmBQdYLDfIBAZiJXVFBCxY1WZEJQ8af7PggfHHHNpmEx-wIydfZLDQFtPWA8B4OIkcK7toAfeu3DEgU8sf6cn8P24tjWc')"></div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+<div class="absolute bottom-8 left-8 z-20 text-white">
+<h2 class="font-headline-lg text-headline-lg font-bold">Karakteristik Optimal</h2>
+<p class="font-body-md text-body-md opacity-90">Keseimbangan antara performa dan nilai jual.</p>
+</div>
+</div>
+</div>
+<!-- Table Section: Data dalam Kategori Ini -->
+<div class="bg-white rounded-[24px] border border-outline-variant/40 overflow-hidden shadow-sm">
+<div class="px-8 py-6 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low/30">
+<h2 class="font-headline-md text-headline-md text-primary">Data dalam Kategori Ini</h2>
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined">filter_list</span>
+<span class="font-label-md text-label-md">Filter Data</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low/50">
+<tr>
+<th class="px-8 py-4 font-label-sm text-label-sm text-secondary uppercase tracking-wider">Brand</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-secondary uppercase tracking-wider">Model</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-secondary uppercase tracking-wider text-center">Year</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-secondary uppercase tracking-wider">Mileage</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-secondary uppercase tracking-wider text-right">Estimated Price</th>
+
+</tr>
+</thead>
+<tbody id="dataset-body">
+</tbody>
+</table>
+</div>
+<div class="px-8 py-4 bg-surface-container-low/30 text-center">
+<button class="text-label-md font-label-md text-secondary hover:text-primary transition-colors inline-flex items-center gap-1">
+                    Lihat Lebih Banyak <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Additional Insight Section -->
+<div class="mt-stack-lg grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-primary text-on-primary p-8 rounded-[24px] flex flex-col justify-between">
+<div>
+<h4 class="font-headline-md text-headline-md mb-2">Pasar Stabil</h4>
+<p class="font-body-md opacity-80 mb-6">Tren harga untuk kategori ekonomis menunjukkan volatilitas rendah dalam 6 bulan terakhir. Ini adalah waktu yang tepat untuk transaksi.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="p-3 bg-white/10 rounded-lg">
+<span class="material-symbols-outlined text-white">trending_up</span>
+</div>
+<div>
+<div class="text-label-sm font-label-sm opacity-70">Volume Transaksi</div>
+<div class="text-body-lg font-bold">+12.4% MoM</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-high p-8 rounded-[24px]">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Rekomendasi</h4>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<span class="font-body-md text-on-surface-variant">Lakukan inspeksi menyeluruh pada komponen kaki-kaki untuk kendaraan di atas 50rb km.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<span class="font-body-md text-on-surface-variant">Pastikan riwayat servis berkala di bengkel resmi terdokumentasi dengan baik.</span>
+</li>
+</ul>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<script>
+        // Simple micro-interaction for the table rows
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('click', () => {
+                row.classList.toggle('bg-surface-container-high');
+            });
+        });
+    </script>
+
+<script>
+const result = JSON.parse(sessionStorage.getItem("hasil_prediksi"));
+console.log(result);
+
+
+if(result){
+
+    const label = document.getElementById("hasil-label");
+    const desc = document.getElementById("hasil-desc");
+    const badge = document.getElementById("badge");
+
+    label.innerText = result.cluster_label;
+
+    desc.innerText = "Kategori ditentukan berdasarkan karakteristik kendaraan yang dimasukkan.";
+    let insight = "";
+
+if(result.cluster_label.includes("Ekonomis")){
+    insight = "Mobil ini cocok untuk penggunaan harian dengan biaya rendah.";
+}
+if(result.cluster_label.includes("Premium")){
+    insight = "Mobil ini termasuk kelas premium dengan harga tinggi dan fitur mewah.";
+}
+if(result.cluster_label.includes("Performa")){
+    insight = "Mobil ini memiliki performa tinggi dan biasanya digunakan untuk kecepatan.";
+}
+if(result.cluster_label.includes("Harian")){
+    insight = "Mobil ini seimbang antara harga dan performa, cocok untuk aktivitas sehari-hari.";
+}
+
+document.getElementById("insight").innerText = insight;
+
+    let warna = "#000";
+    let badgeColor = "#000";
+
+    if(result.cluster_id == 0){
+        warna = "blue";
+        badgeColor = "blue";
+    }
+    if(result.cluster_id == 1){
+        warna = "green";
+        badgeColor = "green";
+    }
+    if(result.cluster_id == 2){
+        warna = "red";
+        badgeColor = "red";
+    }
+    if(result.cluster_id == 3){
+        warna = "purple";
+        badgeColor = "purple";
+    }
+
+    label.style.color = warna;
+    badge.style.background = badgeColor;
+    badge.innerText = "Cluster " + result.cluster_id;
+
+    // ✅ dataset dummy (bisa kamu upgrade nanti)
+    const dataset = result.data;
+
+    let rows = "";
+
+   dataset.forEach(d => {
+    rows += `
+    <tr>
+        <td class="px-8 py-5">${d.brand}</td>
+        <td class="px-8 py-5">${d.model}</td>
+        <td class="px-8 py-5 text-center">${d.model_year}</td>
+        <td class="px-8 py-5">${d.milage}</td>
+        <td class="px-8 py-5 text-right font-bold">$${d.price}</td>
+    </tr>
+    `;
+});
+
+    document.getElementById("dataset-body").innerHTML = rows;
+}
+
+const input = JSON.parse(sessionStorage.getItem("input_data"));
+
+if(input){
+    document.getElementById("summary").innerHTML = `
+        Tahun: ${input.model_year} <br>
+        Milage: ${input.milage} km <br>
+        Horsepower: ${input.horsepower} <br>
+        Engine: ${input.engine_size} L <br>
+        Harga: $ ${input.price}
+    `;
+}
+
+const acc = result.accuracy ? result.accuracy * 100 : 0;
+
+document.getElementById("acc-text").innerText = acc.toFixed(1) + "%";
+document.getElementById("acc-bar").style.width = acc + "%";
+
+
+let status = "Akurasi Cukup";
+
+if(acc > 80) status = "Akurasi Tinggi";
+if(acc > 90) status = "Sangat Akurat";
+
+document.querySelector("h3").innerText = status;
+
+</script>
+
+</body></html>
+
+{% endblock %}
