@@ -56,6 +56,9 @@ Cars-Clustered-Prediction/
 │   ├── rf_model.pkl       # Model Random Forest yang sudah dilatih
 │   └── scaler.pkl         # Scaler untuk normalisasi data
 │
+├── notebooks/ 
+│   └── kode_model.ipynb   # Notebook preprocessing, clustering & training model
+│
 ├── static/
 │   ├── script.css         # Script tambahan UI
 │   └── style.css          # Styling halaman web
@@ -68,7 +71,7 @@ Cars-Clustered-Prediction/
 │
 ├── config.py              # Konfigurasi aplikasi
 ├── requirements.txt       # Daftar dependency
-└── run.py                 # Entry point untuk menjalankan aplikasi
+└── run.py                 # Menjalankan aplikasi Flask dari terminal
 ```
  🚀 Cara Menjalankan Project
 
