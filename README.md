@@ -1,4 +1,4 @@
-# 🚗 Prediksi Kelas Mobil Bekas
+#  Hybrid ML System for Used Car Classification (K-Means & Random Forest)
 
 Sistem ini merupakan implementasi **machine learning berbasis pendekatan hybrid**, yang menggabungkan metode **unsupervised learning (K-Means Clustering)** dan **supervised learning (Random Forest Classification)** untuk mengelompokkan dan memprediksi kategori mobil bekas berdasarkan karakteristik kendaraan.
 
