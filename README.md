@@ -83,7 +83,7 @@ pip install -r requirements.txt
 
 # 4. Jalankan aplikasi Flask
 python run.py
-``
+```
 🌐 Akses Aplikasi
 
 http://localhost:5000
