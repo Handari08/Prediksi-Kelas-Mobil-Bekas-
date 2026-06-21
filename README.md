@@ -87,14 +87,15 @@ python run.py
 
 # 5. Buka di browser
 http://localhost:5000
+```
 
 
-📈 Metode Machine Learning
+##📈 Metode Machine Learning
 
 Clustering : K-Means
 Classification : Random Forest
 
-📎 Catatan
+##📎 Catatan
 Project ini dibuat sebagai bagian dari tugas UAS dan bertujuan untuk mengimplementasikan konsep machine learning ke dalam sistem berbasis aplikasi web yang interaktif dan aplikatif.
 
 
