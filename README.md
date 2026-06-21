@@ -69,7 +69,7 @@ Cars-Clustered-Prediction/
 ├── config.py              # Konfigurasi aplikasi
 ├── requirements.txt       # Daftar dependency
 └── run.py                 # Entry point untuk menjalankan aplikasi
-
+```
  🚀 Cara Menjalankan Project
 
 ```bash
