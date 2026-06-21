@@ -69,9 +69,9 @@ Cars-Clustered-Prediction/
 ├── config.py              # Konfigurasi aplikasi
 ├── requirements.txt       # Daftar dependency
 └── run.py                 # Entry point untuk menjalankan aplikasi
-```
-🚀 Cara Menjalankan Project
 
+🚀 Cara Menjalankan Project
+```bash
 # 1. Clone repository
 git clone https://github.com/username/repo-name.git
 
