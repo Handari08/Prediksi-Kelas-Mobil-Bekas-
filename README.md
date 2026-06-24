@@ -100,6 +100,11 @@ python run.py
 http://localhost:5000
 ```
 
+## 🌐 Live Demo
+```bash
+https://used-car-prediction.up.railway.app/
+```
+
 
 📈 Metode Machine Learning
 
